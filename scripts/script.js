@@ -18,3 +18,9 @@ function getPlayerChoice() {
         return pcChoice;
     }
 }
+
+function getPlayerName(){
+    const playerName = prompt("What is your name?")
+    return playerName; 
+}
+
