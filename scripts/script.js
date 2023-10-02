@@ -3,5 +3,5 @@
 let rpsArr = ["Rock", "Paper", "Scissors"];
 
 function getComputerChoice() {
-    rpsArr[(Math.floor(Math.random() * rpsArr.length))]
+    return rpsArr[(Math.floor(Math.random() * rpsArr.length))]
 }
