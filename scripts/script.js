@@ -25,6 +25,8 @@ function getPlayerName(){
     return playerName; 
 }
 
+//function for play a round
+//need to fix bug when player enters incorrect choice anything other than rock paper scissors and returns undefined
 function playRound() {
     const playerName = getPlayerName();
     const playerChoice = getPlayerChoice();
