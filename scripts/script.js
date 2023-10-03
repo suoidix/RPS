@@ -73,7 +73,7 @@ function game() {
     if (pcScore > cpuScore) { 
             alert (`You win! You scored ${pcScore} points!`);
         } else if (cpuScore > pcScore) {
-            alert (`You loose! Computer scored ${cpuScore} points!`);
+            alert (`You lose! Computer scored ${cpuScore} points!`);
         } else
             alert ('Tie! No one wins!')   
 }
