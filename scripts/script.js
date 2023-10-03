@@ -1,8 +1,10 @@
 // Javascript for rock, paper, scissors game
 
+const choiceArr = ["rock", "paper", "scissors"];
 let pcScore = 0;
 let cpuScore = 0;
-const choiceArr = ["rock", "paper", "scissors"];
+
+game();
 
 //function for computer selection
 function getComputerChoice() {
@@ -14,7 +16,7 @@ function getPlayerChoice() {
     const pcChoice = prompt("Choose: Rock, Paper, or Scissors:").toLowerCase(); // prompt for input and change case to lower
     if (pcChoice == null || !choiceArr.includes(pcChoice)) { // determine if input is null or not equal to choice array
         alert("Please enter Rock, Paper, or Scissors."); // if true ask to input again
-        return getPlayerChoice(); //must user return before function call, otherwise
+        return getPlayerChoice(); // must user return before recursive function call, otherwise otherwise the call will return undefined
     } else if (choiceArr.includes(pcChoice)){ // if present in array return choice
         return pcChoice; 
     }  
@@ -27,32 +29,51 @@ function getPlayerName(){
 }
 
 //function for play a round
-function playRound() {
-    const playerName = getPlayerName();
+function playRound(playerName) {
+
     const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();
 
     if (playerChoice === computerChoice) {
-        return "Tie!"
+        alert ("Tie!")
     } else if (playerChoice === "rock" && computerChoice === "paper") {
         cpuScore++;
-        return `${playerName} looses! ${computerChoice} beats ${playerChoice}!`;
+        alert (`${playerName} looses! ${computerChoice} beats ${playerChoice}!`);
     } else if (playerChoice === "rock" && computerChoice === "scissors") {
         pcScore++;
-        return `${playerName} wins! ${playerChoice} beats ${computerChoice}!`;
+        alert (`${playerName} wins! ${playerChoice} beats ${computerChoice}!`);
     } else if (playerChoice === "paper" && computerChoice === "scissors") {
         cpuScore++;
-        return `${playerName} looses! ${computerChoice} beats ${playerChoice}!`;
+        alert (`${playerName} looses! ${computerChoice} beats ${playerChoice}!`);
     } else if (playerChoice === "paper" && computerChoice === "rock") {
         pcScore++;
-        return `${playerName} wins! ${playerChoice} beats ${computerChoice}!`;
+        alert (`${playerName} wins! ${playerChoice} beats ${computerChoice}!`);
     } else if (playerChoice === "scissors" && computerChoice === "rock") {
         cpuScore++;
-        return `${playerName} looses! ${computerChoice} beats ${playerChoice}!`;
+        alert (`${playerName} looses! ${computerChoice} beats ${playerChoice}!`);
     } else if (playerChoice === "scissors" && computerChoice === "paper") {
         pcScore++;
-        return `${playerName} wins! ${playerChoice} beats ${computerChoice}!`;
+        alert (`${playerName} wins! ${playerChoice} beats ${computerChoice}!`);
     } 
 }
 
-playRound()
+//function to play game
+function game() {
+
+    console.log("Let's play rock, paper, scissors!")
+
+    const playerName = getPlayerName();
+    let rounds = 5;
+
+    for(let i = 0; i < rounds; i++) {
+        playRound(playerName);
+    }
+
+    //display winner based on best out of 5
+    if (pcScore >= 3) { 
+            alert (`You win! You scored ${pcScore} points!`);
+        } else if (cpuScore >= 3) {
+            alert (`You loose! Computer scored ${cpuScore} points!`);
+        } else
+            alert ('Tie! No one wins!')   
+}
