@@ -60,7 +60,7 @@ function playRound(playerName) {
 //function to play game
 function game() {
 
-    console.log("Let's play rock, paper, scissors!")
+    alert("Let's play rock, paper, scissors!")
 
     const playerName = getPlayerName();
     let rounds = 5;
@@ -70,9 +70,9 @@ function game() {
     }
 
     //display winner based on best out of 5
-    if (pcScore >= 3) { 
+    if (pcScore > cpuScore) { 
             alert (`You win! You scored ${pcScore} points!`);
-        } else if (cpuScore >= 3) {
+        } else if (cpuScore > pcScore) {
             alert (`You loose! Computer scored ${cpuScore} points!`);
         } else
             alert ('Tie! No one wins!')   
