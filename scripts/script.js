@@ -1,10 +1,13 @@
 // Javascript for rock, paper, scissors game
-
 const choiceArr = ["rock", "paper", "scissors"];
+let rounds = 5;
 let pcScore = 0;
 let cpuScore = 0;
 
-game();
+const btns = document.querySelectorAll('#btn');
+
+//game();
+getPlayerChoice();
 
 //function for computer selection
 function getComputerChoice() {
@@ -12,7 +15,7 @@ function getComputerChoice() {
 }
 
 //function for player choice
-function getPlayerChoice() {
+/*function getPlayerChoice() {
     const pcChoice = prompt("Choose: Rock, Paper, or Scissors:").toLowerCase(); // prompt for input and change case to lower
     if (pcChoice == null || !choiceArr.includes(pcChoice)) { // determine if input is null or not equal to choice array
         alert("Please enter Rock, Paper, or Scissors."); // if true ask to input again
@@ -20,49 +23,90 @@ function getPlayerChoice() {
     } else if (choiceArr.includes(pcChoice)){ // if present in array return choice
         return pcChoice; 
     }  
-}
+}*/
 
-//function for player name
+
+/*function for player name
 function getPlayerName(){
     const playerName = prompt("What is your name?")
     return playerName; 
-}
+}*/
 
 //function for play a round
-function playRound(playerName) {
+function playRound(playerChoice) {
 
-    const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();
+    let result = ""
 
     if (playerChoice === computerChoice) {
-        alert ("Tie!")
+        result = ("Tie!")
     } else if (playerChoice === "rock" && computerChoice === "paper") {
         cpuScore++;
-        alert (`${playerName} looses! ${computerChoice} beats ${playerChoice}!`);
+        result = (`You lose, ${computerChoice} beats ${playerChoice}!`);
     } else if (playerChoice === "rock" && computerChoice === "scissors") {
         pcScore++;
-        alert (`${playerName} wins! ${playerChoice} beats ${computerChoice}!`);
+        result = (`You win ${playerChoice} beats ${computerChoice}!`);
     } else if (playerChoice === "paper" && computerChoice === "scissors") {
         cpuScore++;
-        alert (`${playerName} looses! ${computerChoice} beats ${playerChoice}!`);
+        result = (`You lose, ${computerChoice} beats ${playerChoice}!`);
     } else if (playerChoice === "paper" && computerChoice === "rock") {
         pcScore++;
-        alert (`${playerName} wins! ${playerChoice} beats ${computerChoice}!`);
+        result = (`You win, ${playerChoice} beats ${computerChoice}!`);
     } else if (playerChoice === "scissors" && computerChoice === "rock") {
         cpuScore++;
-        alert (`${playerName} looses! ${computerChoice} beats ${playerChoice}!`);
+        result = (`You lose, ${computerChoice} beats ${playerChoice}!`);
     } else if (playerChoice === "scissors" && computerChoice === "paper") {
         pcScore++;
-        alert (`${playerName} wins! ${playerChoice} beats ${computerChoice}!`);
+        result = (`You win, ${playerChoice} beats ${computerChoice}!`);
     } 
+    document.getElementById('result').innerHTML = result
 }
 
 //function to play game
-function game() {
+
+function getPlayerChoice() {
+    btns.forEach((btn) => {
+        btn.addEventListener('click', () =>{
+                playRound(btn.value); 
+                console.log(`PC score: ${pcScore}`);
+                console.log(`CPU score: ${cpuScore}`);
+                rounds--;
+                if (pcScore > cpuScore && rounds === 0) { 
+                    alert (`You win! You scored ${pcScore} points!`);
+                    result = 'Game reset.'
+                    document.getElementById('result').innerHTML = result
+                    rounds = 5;
+                    pcScore = 0;
+                    cpuScore = 0;
+                } else if (cpuScore > pcScore && rounds === 0) {
+                    alert (`You lose! Computer scored ${cpuScore} points!`);
+                    result = 'Game reset.'
+                    document.getElementById('result').innerHTML = result
+                    rounds = 5;
+                    pcScore = 0;
+                    cpuScore = 0;
+                } else if (rounds === 0) {
+                    alert ('Tie! No one wins!')
+                    result = 'Game reset.'
+                    document.getElementById('result').innerHTML = result
+                    rounds = 5;
+                    pcScore = 0;
+                    cpuScore = 0;
+                }
+        }) 
+    })
+}
+
+
+
+/*function game() {
 
     alert("Let's play rock, paper, scissors!")
 
-    const playerName = getPlayerName();
+    const playerName = 'Dave' //getPlayerName();
+    const playerChoice = getPlayerChoice();
+    playRound(playerName, playerChoice);
+
     let rounds = 5;
 
     for(let i = 0; i < rounds; i++) {
@@ -75,5 +119,5 @@ function game() {
         } else if (cpuScore > pcScore) {
             alert (`You lose! Computer scored ${cpuScore} points!`);
         } else
-            alert ('Tie! No one wins!')   
-}
+            alert ('Tie! No one wins!')  
+} */
