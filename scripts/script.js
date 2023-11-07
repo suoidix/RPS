@@ -21,15 +21,15 @@ function playRound(playerChoice) {
     let result = ""
 
     if (playerChoice === computerChoice) {
-        result = (`Tie! You both chose ${playerChoice}! <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`)
+        result = (`Tie! You both chose ${playerChoice}! <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore} <br> Computer Score: ${cpuScore} <br><br>Rounds Left: ${rounds - 1}`)
     }  else if (playerChoice === "rock" && computerChoice === "scissors"
     || playerChoice === "paper" && computerChoice === "rock"
     || playerChoice === "scissors" && computerChoice === "paper") {
         pcScore++;
-        result = (`You win, ${playerChoice} beats ${computerChoice}! <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`);
+        result = (`You win, ${playerChoice} beats ${computerChoice}! <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore} <br> Computer Score: ${cpuScore} <br><br>Rounds Left: ${rounds - 1}`);
     } else {
         cpuScore++;
-        result = (`You lose, ${computerChoice} beats ${playerChoice}! <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`);
+        result = (`You lose, ${computerChoice} beats ${playerChoice}! <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore} <br><br>Rounds Left: ${rounds - 1}`);
     }
     document.getElementById('result').innerHTML = result
 }
@@ -58,7 +58,7 @@ function getPlayerChoice() {
 
 //function to reset game
 function resetGame() {
-    result = 'Game reset.'
+    result = `Game reset. <br><br>Rounds left: ${rounds}`
     document.getElementById('result').innerHTML = result
     rounds = 5;
     pcScore = 0;
