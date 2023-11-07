@@ -54,26 +54,23 @@ function getPlayerChoice() {
                 rounds--;
                 if (pcScore > cpuScore && rounds === 0) { 
                     alert (`You win! You scored ${pcScore} points!`);
-                    result = 'Game reset.'
-                    document.getElementById('result').innerHTML = result
-                    rounds = 5;
-                    pcScore = 0;
-                    cpuScore = 0;
+                    resetGame();
                 } else if (cpuScore > pcScore && rounds === 0) {
                     alert (`You lose! Computer scored ${cpuScore} points!`);
-                    result = 'Game reset.'
-                    document.getElementById('result').innerHTML = result
-                    rounds = 5;
-                    pcScore = 0;
-                    cpuScore = 0;
+                    resetGame();
                 } else if (rounds === 0) {
                     alert ('Tie! No one wins!')
-                    result = 'Game reset.'
-                    document.getElementById('result').innerHTML = result
-                    rounds = 5;
-                    pcScore = 0;
-                    cpuScore = 0;
+                    resetGame();
                 }
         }) 
     })
+}
+
+//function to reset game
+function resetGame() {
+    result = 'Game reset.'
+    document.getElementById('result').innerHTML = result
+    rounds = 5;
+    pcScore = 0;
+    cpuScore = 0;
 }
