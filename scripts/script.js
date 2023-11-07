@@ -31,7 +31,7 @@ function playRound(playerChoice) {
     || playerChoice === "paper" && computerChoice === "rock"
     || playerChoice === "scissors" && computerChoice === "paper") {
         pcScore++;
-        result = (`You win ${playerChoice} beats ${computerChoice}!`);
+        result = (`You win, ${playerChoice} beats ${computerChoice}!`);
     }
     document.getElementById('result').innerHTML = result
 }
