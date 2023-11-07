@@ -43,10 +43,10 @@ function getPlayerChoice() {
                 playRound(btn.value); 
                 console.log(`PC score: ${pcScore}`);
                 console.log(`CPU score: ${cpuScore}`);
-                if (pcScore > cpuScore && pcScore === 5) { 
+                if (pcScore === 5) { 
                     alert (`You win! You scored ${pcScore} points!`);
                     resetGame();
-                } else if (cpuScore > pcScore && cpuScore === 5) {
+                } else if (cpuScore === 5) {
                     alert (`You lose! Computer scored ${cpuScore} points!`);
                     resetGame();
                 } 
