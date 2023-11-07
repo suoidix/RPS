@@ -22,25 +22,17 @@ function playRound(playerChoice) {
 
     if (playerChoice === computerChoice) {
         result = ("Tie!")
-    } else if (playerChoice === "rock" && computerChoice === "paper") {
+    } else if (playerChoice === "rock" && computerChoice === "paper" 
+    || playerChoice === "paper" && computerChoice === "scissors" 
+    || playerChoice === "scissors" && computerChoice === "rock") {
         cpuScore++;
         result = (`You lose, ${computerChoice} beats ${playerChoice}!`);
-    } else if (playerChoice === "rock" && computerChoice === "scissors") {
+    } else if (playerChoice === "rock" && computerChoice === "scissors"
+    || playerChoice === "paper" && computerChoice === "rock"
+    || playerChoice === "scissors" && computerChoice === "paper") {
         pcScore++;
         result = (`You win ${playerChoice} beats ${computerChoice}!`);
-    } else if (playerChoice === "paper" && computerChoice === "scissors") {
-        cpuScore++;
-        result = (`You lose, ${computerChoice} beats ${playerChoice}!`);
-    } else if (playerChoice === "paper" && computerChoice === "rock") {
-        pcScore++;
-        result = (`You win, ${playerChoice} beats ${computerChoice}!`);
-    } else if (playerChoice === "scissors" && computerChoice === "rock") {
-        cpuScore++;
-        result = (`You lose, ${computerChoice} beats ${playerChoice}!`);
-    } else if (playerChoice === "scissors" && computerChoice === "paper") {
-        pcScore++;
-        result = (`You win, ${playerChoice} beats ${computerChoice}!`);
-    } 
+    }
     document.getElementById('result').innerHTML = result
 }
 
