@@ -18,22 +18,28 @@ function playRound(playerChoice) {
 
     const computerChoice = getComputerChoice();
     let result = ""
+    let cpuItem = ""
 
     if (playerChoice === computerChoice) {
         result = (`Tie! You both chose ${playerChoice}! 
         <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`)
+        cpuItem = (`Computer chose ${computerChoice}!<br><br>`)
     }  else if (playerChoice === "rock" && computerChoice === "scissors"
     || playerChoice === "paper" && computerChoice === "rock"
     || playerChoice === "scissors" && computerChoice === "paper") {
         pcScore++;
         result = (`You win, ${playerChoice} beats ${computerChoice}! 
         <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`);
+        cpuItem = (`Computer chose ${computerChoice}!<br><br>`)
     } else {
         cpuScore++;
         result = (`You lose, ${computerChoice} beats ${playerChoice}! 
         <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`);
+        cpuItem = (`Computer chose ${computerChoice}!<br><br>`)
     }
     document.getElementById('result').innerHTML = result
+    document.getElementById('cpuIcon').innerHTML = cpuItem
+
 }
 
 //function to play game
@@ -56,8 +62,10 @@ function getPlayerChoice() {
 
 //function to reset game
 function resetGame() {
+    cpuItem = "<br><br>"
     result = `Game reset. <br><br><b>Final Score:</b><br>Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`
     document.getElementById('result').innerHTML = result
+    document.getElementById('cpuIcon').innerHTML = cpuItem
     pcScore = 0;
     cpuScore = 0;
 }
