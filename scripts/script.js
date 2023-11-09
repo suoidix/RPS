@@ -56,7 +56,7 @@ function getPlayerChoice() {
 
 //function to reset game
 function resetGame() {
-    result = `Game reset. <br><br>Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`
+    result = `Game reset. <br><br><b>Final Score:</b><br>Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`
     document.getElementById('result').innerHTML = result
     pcScore = 0;
     cpuScore = 0;
