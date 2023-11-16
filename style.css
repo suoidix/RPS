@@ -5,4 +5,22 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
+    background-color: darkslateblue;
+    color: orange;
+    font-weight: 900;
+}
+#container {
+    margin: auto;
+    text-align: center;
+}
+
+#results {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+img {
+    height: 200px;
+    width: auto;
 }
