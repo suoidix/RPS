@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="scripts/script.js" defer></script>
-    <link rel="stylesheet" href=""style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="cpuIcon"></div>
-    <div id="choices">
-        <button id="btn" value="rock">Rock</button>
-        <button id="btn" value="paper">Paper</button>
-        <button id="btn" value="scissors">Scissors</button>
-    </div>
-    <div id ='result'>
+    <div id="container">
+        <div id="cpuIcon">Let's play rock, paper, scissors! <br><br></div>
+        <div id="results">
+            <div id ='playerImage'>
+            </div>
+            <div id ='computerImage'>
+            </div>
+        </div>
+        <div id ='result'></div>
+        <div id="choices">
+            <button id="btn" value="rock">Rock</button>
+            <button id="btn" value="paper">Paper</button>
+            <button id="btn" value="scissors">Scissors</button>
+        </div>
     </div>
 </body>
 </html>
