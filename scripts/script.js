@@ -4,6 +4,7 @@ let pcScore = 0;
 let cpuScore = 0;
 
 const btns = document.querySelectorAll('#btn');
+const reset = document.getElementById('reset');
 
 //game();
 getPlayerChoice();
@@ -48,34 +49,50 @@ function playRound(playerChoice) {
 
 //function to play game
 function getPlayerChoice() {
+    let cpuItem = "";
+    result = "";
     btns.forEach((btn) => {
         btn.addEventListener('click', () =>{
                 playRound(btn.value); 
-                console.log(`PC score: ${pcScore}`);
-                console.log(`CPU score: ${cpuScore}`);
                 if (pcScore === 5) { 
-                    cpuItem = (`You win! You scored ${pcScore} points!`);
+                    cpuItem = (`You win! You scored ${pcScore} points!<b><br><br>`);
                     resetGame();
+                    document.getElementById('cpuIcon').innerHTML = cpuItem
                 } else if (cpuScore === 5) {
-                    cpuItem = (`You lose! Computer scored ${cpuScore} points!`);
+                    cpuItem = (`You lose! Computer scored ${cpuScore} points!<b><br><br>`);
                     resetGame();
+                    document.getElementById('cpuIcon').innerHTML = cpuItem
                 } 
-                document.getElementById('cpuIcon').innerHTML = cpuItem
         }) 
     })
 }
 
 //function to reset game
 function resetGame() {
-    clearImage = ""
-    result = `Game reset. <br><br><b>Final Score:</b><br>Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`
+    clearImage = "";
+    cpuItem = "";
+    result = `<b>Final Score:</b><br><br>Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`
     document.getElementById('result').innerHTML = result
-    document.getElementById('computerImage').innerHTML = clearImage
-    document.getElementById('playerImage').innerHTML = clearImage
+    disableButtons();
+    createResetButton();
     pcScore = 0;
     cpuScore = 0;
+    document.getElementById('resetBtn').onclick = function() {
+        btns.forEach(btn => {
+            btn.disabled = false
+        })
+        const resetBtn = document.getElementById('resetBtn');
+        resetBtn.remove();
+        document.getElementById('computerImage').innerHTML = clearImage
+        document.getElementById('playerImage').innerHTML = clearImage
+        result = ""
+        cpuItem = "Let's play rock, paper, scissors! "
+        document.getElementById('result').innerHTML = cpuItem
+        document.getElementById('cpuIcon').innerHTML = result
+    }
 }
 
+//function to insert image to playing field
 function getImage (computerChoice, playerChoice) {
     let cpuImage = ""
     let playerImage = ""
@@ -102,5 +119,19 @@ function getImage (computerChoice, playerChoice) {
 
     document.getElementById('computerImage').innerHTML = cpuImage
     document.getElementById('playerImage').innerHTML = playerImage
-
 }
+
+//disable RPS buttons
+function disableButtons() {
+    btns.forEach(btn => {
+        btn.disabled = true
+    })
+}
+
+//reset game button 
+function createResetButton() {
+    const resetButton = document.createElement('button');
+    resetButton.textContent = 'Reset Game!';
+    resetButton.id = 'resetBtn';
+    reset.appendChild(resetButton);
+} 
