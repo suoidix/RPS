@@ -24,3 +24,31 @@ img {
     height: 200px;
     width: auto;
 }
+
+.rock {
+    background: #f638dd;
+    color: yellow;
+}
+
+.paper {
+    background: #38d0f6;
+    color: white;
+}
+
+.scissors {
+    background: #38f697;
+    color: darkorchid;
+}
+
+#btn, #resetBtn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 16px;
+    border: 1px darkslateblue;
+}
+
+#resetBtn {
+    background: orange;
+    color: white;
+}
