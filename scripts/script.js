@@ -6,7 +6,6 @@ let cpuScore = 0;
 const btns = document.querySelectorAll('#btn');
 const reset = document.getElementById('reset');
 
-//game();
 getPlayerChoice();
 
 //function for computer selection
