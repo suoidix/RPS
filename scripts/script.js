@@ -19,13 +19,11 @@ function playRound(playerChoice) {
     const computerChoice = getComputerChoice();
     let result = ""
     let cpuItem = ""
-    let images = ""
 
     if (playerChoice === computerChoice) {
         result = (`Tie! You both chose ${playerChoice}! 
         <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`)
         cpuItem = (`Computer chose ${computerChoice}!<br><br>`)
-        images
     }  else if (playerChoice === "rock" && computerChoice === "scissors"
     || playerChoice === "paper" && computerChoice === "rock"
     || playerChoice === "scissors" && computerChoice === "paper") {
@@ -33,13 +31,11 @@ function playRound(playerChoice) {
         result = (`You win, ${playerChoice} beats ${computerChoice}! 
         <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`);
         cpuItem = (`Computer chose ${computerChoice}!<br><br>`)
-        images
     } else {
         cpuScore++;
         result = (`You lose, ${computerChoice} beats ${playerChoice}! 
         <br><br> Player Score: ${pcScore} <br> Computer Score: ${cpuScore}`);
         cpuItem = (`Computer chose ${computerChoice}!<br><br>`)
-        images
     }
     document.getElementById('result').innerHTML = result
     document.getElementById('cpuIcon').innerHTML = cpuItem
