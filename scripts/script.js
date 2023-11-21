@@ -4,7 +4,6 @@ let pcScore = 0;
 let cpuScore = 0;
 
 const btns = document.querySelectorAll('#btn');
-const reset = document.getElementById('reset');
 
 getPlayerChoice();
 
